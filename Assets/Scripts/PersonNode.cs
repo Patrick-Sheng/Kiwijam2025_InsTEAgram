@@ -5,6 +5,9 @@ using System;
 
 public class PersonNode : MonoBehaviour, IHitReceiver
 {
+    public int id { get; private set; }
+    [SerializeField] private string personName;
+
     [SerializeField] private LineRenderer aimLine;
     [SerializeField] private Transform aimLineOrigin;
     private bool isAiming;

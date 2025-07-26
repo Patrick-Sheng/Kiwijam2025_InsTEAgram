@@ -1,11 +1,13 @@
+using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Radishmouse;
 using UnityEngine;
 
 public class MappingManager : MonoBehaviour
 {
-    [SerializeField] private Dictionary<int, PairingInfo> connections;
-    [SerializeField] private Dictionary<int, ConnectionLine> connectionLines;
+    [SerializeField] private Dictionary<int, PairingInfo> connections; // Use int here instead of Guid cause we need it to be based on the pair
+    [SerializeField] private Dictionary<Guid, ConnectionLine> connectionLines;
 
     [SerializeField] private PersonNode[] personNodes;
 
@@ -25,21 +27,22 @@ public class MappingManager : MonoBehaviour
                 selectedNode.DeactivateAimLine();
                 selectedNode = null;
             }
-        }
 
-        if (Input.GetMouseButtonDown(0))
-        {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
-
-            Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
 
             // For line renderer lines because the dynamic collider is in 3D
             if (Physics.Raycast(ray, out hitInfo))
             {
                 Debug.Log("Different layer");
             }
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
 
             // For everything else using a 2D collider
             if (hit)
@@ -70,28 +73,85 @@ public class MappingManager : MonoBehaviour
             targetNode = node;
 
             // Create pairing uuid
+            int pairingId = CreatePairingId(selectedNode.id, targetNode.id);
 
-            // Check if pairing exists in colllection
+            // Check if pairing exists in colllection   
+            if (connections.ContainsKey(pairingId))
+            {
+                // If it does exist, retrieve data, and check whether the relationship type exists in the relationship
+                PairingInfo existingPair;
+                connections.TryGetValue(pairingId, out existingPair);
 
-            // If it doesn't exist, add it and be done
+                if (existingPair != null)
+                {
+                    // Check if max relationships between pair is existing (2)
+                    if (existingPair.relationships.Count == 2)
+                    {
+                        // TODO: Prompt user
+                        return;
+                    }
 
-            // If it does exist, retrieve data, and check whether the relationship type exists in the relationship
+                    // If the relationship does exist, don't add it and be done
+                    foreach (Relationship ship in existingPair.relationships)
+                    {
+                        if (ship.relationshipType == selectedRelation)
+                        {
+                            return;
+                        }
+                    }
 
-            // If the relationship does exist, don't add it and be done
+                    Relationship newRelationship = new Relationship(Guid.NewGuid(), selectedRelation);
 
-            // If the relationship type doesn't exist, check if there are 2 relationships (cause thats the max between a pair)
+                    // If there are not two relatipnships with the pair already, add the relationship and supply unique id
+                    existingPair.relationships.Add(newRelationship);
 
-            // If there are two already, don't add and be done (probably hint user for reason)
+                    DrawConnectionLine(existingPair, newRelationship);
+                }
+            }
+            else
+            {
+                // Create relationship and add to collection
+                PairingInfo newPairingInfo;
+                Relationship newRelationship = new Relationship(Guid.NewGuid(), selectedRelation);
+                newPairingInfo = new PairingInfo
+                {
+                    pair = Tuple.Create(selectedNode, targetNode),
+                    relationships = new List<Relationship> { newRelationship }
+                };
 
-            // If there are not two already, add the relationship and supply unique id
+                DrawConnectionLine(newPairingInfo, newRelationship);
+            }
 
-            // ==== Line Creation ====
 
-            // After adding relationship, instantiate ConnectionLine and initialise with callback and id
 
-            // Add new connectin line to connection line dictionary using relation ship id as the key
+        }
+    }
 
-            // Check the number of relationships for that pair
+    private void DrawConnectionLine(PairingInfo pairingInfo, Relationship newRelationship)
+    {
+        // ==== Line Creation ====
+
+        // After adding relationship, instantiate ConnectionLine and initialise with callback and id
+        ConnectionLine connLine = Instantiate(line);
+        connLine.lineRenderer.startColor = selectedRelation.color;
+        connLine.lineRenderer.endColor = selectedRelation.color;
+        connLine.onRemoveEvent += RemoveLine;
+
+        // Add new connectin line to connection line dictionary using relation ship id as the key
+        connectionLines.Add(newRelationship.id, connLine);
+
+        // Check the number of relationships for that pair
+        // If the number is 1, just set line position using both the PersonNodes' origin points
+        if (pairingInfo.relationships.Count == 1)
+        {
+            SetLinePoints(
+                connLine,
+                pairingInfo.pair.Item1.transform.position,
+                pairingInfo.pair.Item2.transform.position
+            );
+        }
+        else if (pairingInfo.relationships.Count == 2)
+        {
 
             // If the number is 2, use special parallel point calculation to get relative points
 
@@ -100,8 +160,6 @@ public class MappingManager : MonoBehaviour
             // Retrieve existing line from connection line dictionary using relationship id and update it's position
 
             // Set the new connection line's positions as well
-
-            // If the number is 1, just set line position using both the PersonNodes' origin points
         }
     }
 
@@ -111,6 +169,28 @@ public class MappingManager : MonoBehaviour
         connLine.lineRenderer.SetPosition(0, pos1);
         connLine.lineRenderer.SetPosition(1, pos2);
         return connLine;
+    }
+
+    private void SetLinePoints(ConnectionLine line, Vector2 pos1, Vector2 pos2)
+    {
+        line.lineRenderer.SetPosition(0, pos1);
+        line.lineRenderer.SetPosition(1, pos2);
+    }
+
+    private int CreatePairingId(int id1, int id2)
+    {
+        string idString1 = id1.ToString();
+        string idString2 = id2.ToString();
+
+        return int.Parse(idString1 + idString2);
+    }
+
+    private void RemoveLine(Guid lineId)
+    {
+        ConnectionLine line;
+        connectionLines.TryGetValue(lineId, out line);
+        Destroy(line.gameObject);
+        connectionLines.Remove(lineId);
     }
 
     //public bool HasRelationWithEachOther(PersonNode to, PersonNode from)

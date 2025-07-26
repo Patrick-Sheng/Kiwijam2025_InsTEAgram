@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class RelationshipTypes
@@ -25,10 +26,10 @@ public class RelationshipType
 
 public class Relationship
 {
-    public int id { get; private set; }
+    public Guid id { get; private set; }
     public RelationshipType relationshipType { get; private set; }
 
-    public Relationship(int id, RelationshipType relationshipType)
+    public Relationship(Guid id, RelationshipType relationshipType)
     {
         this.id = id;
         this.relationshipType = relationshipType;

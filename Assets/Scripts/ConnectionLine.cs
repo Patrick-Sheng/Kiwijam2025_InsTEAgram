@@ -5,8 +5,8 @@ using UnityEngine.EventSystems;
 public class ConnectionLine : MonoBehaviour, IHitReceiver
 {
     public LineRenderer lineRenderer;
-    public int lineId;
-    public Action<int> onRemoveEvent;
+    public Guid lineId;
+    public Action<Guid> onRemoveEvent;
 
     public void Start()
     {
