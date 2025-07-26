@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class IntroManager : MonoBehaviour
 {
-  public GameObject introPanel;
+  [SerializeField]
+  private GameObject introPanel;
 
 
   // Start is called once before the first execution of Update after the MonoBehaviour is created

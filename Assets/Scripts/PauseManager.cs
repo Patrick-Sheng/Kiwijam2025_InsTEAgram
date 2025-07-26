@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PauseManager : MonoBehaviour
 {
-
-  public GameObject pausePanel;
+  [SerializeField]
+  private GameObject pausePanel;
   // Update is called once per frame
   void Update()
   {
