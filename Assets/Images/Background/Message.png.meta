@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d6e5e3549664cac4f9cb5f3af8acbb48
+guid: 0789db748d84f5b4b807cb058dae47c6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6771347127577928495
-    second: BryanProfile_old_0
+      213: -4679452497568461380
+    second: Message_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BryanProfile_old_0
+      name: Message_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 432
-        height: 768
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1dc1bd1e9a75702a0800000000000000
-      internalID: -6771347127577928495
+      spriteID: cbd0e1b0fbe3f0fb0800000000000000
+      internalID: -4679452497568461380
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      BryanProfile_old_0: -6771347127577928495
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

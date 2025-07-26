@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0085659cbe3ca944cb5d5a082333acd2
+guid: 8f7ed3272a08ca7499d37e447327a9f7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 710212369272261822
-    second: GeorgeDM_0
+      213: 6002165541035508255
+    second: Slide 16_9 - 21_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GeorgeDM_0
+      name: Slide 16_9 - 21_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 432
-        height: 768
+        height: 1486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ebccf81136e2bd900800000000000000
-      internalID: 710212369272261822
+      spriteID: f12038c32c9fb4350800000000000000
+      internalID: 6002165541035508255
       vertices: []
       indices: 
       edges: []
@@ -134,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Slide 16_9 - 21_0: 6002165541035508255
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
