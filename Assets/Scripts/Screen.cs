@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Screen : MonoBehaviour
 {
@@ -11,11 +12,18 @@ public class Screen : MonoBehaviour
     private GameManager.SCREENS ScreenType = GameManager.SCREENS.DMLIST;
     [SerializeField]
     private bool characterOwnership = false;
-    [SerializeField]
-    private GameManager.CHARACTERS character = GameManager.CHARACTERS.NULL;
+
+    public GameManager.CHARACTERS character = GameManager.CHARACTERS.GEORGE;
+
+    public UnityEvent onChangeScreen;
 
     private void Start()
     {
+        if (onChangeScreen == null)
+        {
+            onChangeScreen = new UnityEvent();
+        }
+
         GameManager.Instance.screenDictionary.Add(ScreenType, this.gameObject);
         GameManager.Instance.AddToScreens(this.gameObject);
         Debug.Log(ScreenType.ToString());
@@ -24,5 +32,6 @@ public class Screen : MonoBehaviour
     public void Activate(GameManager.CHARACTERS _character)
     {
         character = _character;
+        onChangeScreen.Invoke();
     }
 }
