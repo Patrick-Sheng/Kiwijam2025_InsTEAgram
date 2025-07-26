@@ -1,0 +1,489 @@
+fileFormatVersion: 2
+guid: 3475355c0580fab49b22a096ee07d51d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1703504676512181693
+    second: Frame 33(1)_0
+  - first:
+      213: -2550176551122996845
+    second: Frame 33(1)_1
+  - first:
+      213: 801257538737189788
+    second: Frame 33(1)_2
+  - first:
+      213: -2544935370545476669
+    second: Frame 33(1)_3
+  - first:
+      213: 1211104466707739562
+    second: Frame 33(1)_4
+  - first:
+      213: 2748700000422974882
+    second: Frame 33(1)_5
+  - first:
+      213: 5975039863222184464
+    second: Frame 33(1)_6
+  - first:
+      213: -4758422989783443226
+    second: Frame 33(1)_7
+  - first:
+      213: -3225053570960676338
+    second: Frame 33(1)_8
+  - first:
+      213: 6821194996854591592
+    second: Frame 33(1)_9
+  - first:
+      213: 168812251496999243
+    second: Frame 33(1)_10
+  - first:
+      213: -5309478437793041697
+    second: Frame 33(1)_11
+  - first:
+      213: -8115504418835583620
+    second: Frame 33(1)_12
+  - first:
+      213: -3299415402851883010
+    second: Frame 33(1)_13
+  - first:
+      213: 4921661042630370680
+    second: Frame 33(1)_14
+  - first:
+      213: -880842340770953457
+    second: Frame 33(1)_15
+  - first:
+      213: 8241898449758806644
+    second: Frame 33(1)_16
+  - first:
+      213: -8935628275003729872
+    second: Frame 33(1)_17
+  - first:
+      213: -7661323005573872545
+    second: Frame 33(1)_18
+  - first:
+      213: -8096112233269975072
+    second: Frame 33(1)_19
+  - first:
+      213: 8039921240481401850
+    second: Frame 33(1)_20
+  - first:
+      213: 5140655681043598761
+    second: Frame 33(1)_21
+  - first:
+      213: -5388651760247791257
+    second: Frame 33(1)_22
+  - first:
+      213: 2039311004911347501
+    second: Frame 33(1)_23
+  - first:
+      213: -8711388431026488647
+    second: Frame 33(1)_24
+  - first:
+      213: 8895158898486598762
+    second: Frame 33(1)_25
+  - first:
+      213: -3840335174594881945
+    second: Frame 33(1)_26
+  - first:
+      213: 3916967583101286144
+    second: Frame 33(1)_27
+  - first:
+      213: 9104170249300155062
+    second: Frame 33(1)_28
+  - first:
+      213: -4077958996476007768
+    second: Frame 33(1)_29
+  - first:
+      213: -1676442797874892360
+    second: Frame 33(1)_30
+  - first:
+      213: 8599319766720216942
+    second: Frame 33(1)_31
+  - first:
+      213: 6515119243130831554
+    second: Frame 33(1)_32
+  - first:
+      213: -4418618200393453184
+    second: Frame 33(1)_33
+  - first:
+      213: -5362593350260247267
+    second: Frame 33(1)_34
+  - first:
+      213: 6340596888873868868
+    second: Frame 33(1)_35
+  - first:
+      213: 9002282224157594308
+    second: Frame 33(1)_36
+  - first:
+      213: -6369277462263509383
+    second: Frame 33(1)_37
+  - first:
+      213: 7859316112211407619
+    second: Frame 33(1)_38
+  - first:
+      213: 8609612272175537010
+    second: Frame 33(1)_39
+  - first:
+      213: -4834633399746040374
+    second: Frame 33(1)_40
+  - first:
+      213: 6009731846589614951
+    second: Frame 33(1)_41
+  - first:
+      213: 3556363472736812195
+    second: Frame 33(1)_42
+  - first:
+      213: -1135689011503915831
+    second: Frame 33(1)_43
+  - first:
+      213: -9050440272037160494
+    second: Frame 33(1)_44
+  - first:
+      213: 6221819812225141481
+    second: Frame 33(1)_45
+  - first:
+      213: -7569393701875992335
+    second: Frame 33(1)_46
+  - first:
+      213: -3992031640856605826
+    second: Frame 33(1)_47
+  - first:
+      213: 7659172794981049918
+    second: Frame 33(1)_48
+  - first:
+      213: 4467475109065137324
+    second: Frame 33(1)_49
+  - first:
+      213: -2079602603567394681
+    second: Frame 33(1)_50
+  - first:
+      213: -3342134603034153550
+    second: Frame 33(1)_51
+  - first:
+      213: -9193375849362798562
+    second: Frame 33(1)_52
+  - first:
+      213: 6437247061494220244
+    second: Frame 33(1)_53
+  - first:
+      213: 4656554426377770839
+    second: Frame 33(1)_54
+  - first:
+      213: -7916112833561946360
+    second: Frame 33(1)_55
+  - first:
+      213: -6693742266156846874
+    second: Frame 33(1)_56
+  - first:
+      213: 2865692225874237267
+    second: Frame 33(1)_57
+  - first:
+      213: 7657428613838054660
+    second: Frame 33(1)_58
+  - first:
+      213: 901529783649500850
+    second: Frame 33(1)_59
+  - first:
+      213: 6529993380121415580
+    second: Frame 33(1)_60
+  - first:
+      213: -1327292898519265231
+    second: Frame 33(1)_61
+  - first:
+      213: 9038222494542714615
+    second: Frame 33(1)_62
+  - first:
+      213: -2047876299353069723
+    second: Frame 33(1)_63
+  - first:
+      213: 2590286318955113409
+    second: Frame 33(1)_64
+  - first:
+      213: 181440424006220093
+    second: Frame 33(1)_65
+  - first:
+      213: -2356075823911616648
+    second: Frame 33(1)_66
+  - first:
+      213: -2801028632915945772
+    second: Frame 33(1)_67
+  - first:
+      213: 4626260999595417974
+    second: Frame 33(1)_68
+  - first:
+      213: -8457250611551564941
+    second: Frame 33(1)_69
+  - first:
+      213: 6959495436205468941
+    second: Frame 33(1)_70
+  - first:
+      213: 2455491568934167291
+    second: Frame 33(1)_71
+  - first:
+      213: -3306113492519964504
+    second: Frame 33(1)_72
+  - first:
+      213: -1463072116376778739
+    second: Frame 33(1)_73
+  - first:
+      213: 9178372416641672042
+    second: Frame 33(1)_74
+  - first:
+      213: 8129668836571327495
+    second: Frame 33(1)_75
+  - first:
+      213: -6882830198171725765
+    second: Frame 33(1)_76
+  - first:
+      213: 4053400664919493112
+    second: Frame 33(1)_77
+  - first:
+      213: 604626459813508503
+    second: Frame 33(1)_78
+  - first:
+      213: -3856662401606900077
+    second: Frame 33(1)_79
+  - first:
+      213: 1898495209332145328
+    second: Frame 33(1)_80
+  - first:
+      213: -3788437461076511694
+    second: Frame 33(1)_81
+  - first:
+      213: -2220777724799851224
+    second: Frame 33(1)_82
+  - first:
+      213: -6206720070435783442
+    second: Frame 33(1)_83
+  - first:
+      213: -6806575145435132757
+    second: Frame 33(1)_84
+  - first:
+      213: -1201579938576851317
+    second: Frame 33(1)_85
+  - first:
+      213: 4423432508364292057
+    second: Frame 33(1)_86
+  - first:
+      213: 8860511130835748534
+    second: Frame 33(1)_87
+  - first:
+      213: 8467095367211055579
+    second: Frame 33(1)_88
+  - first:
+      213: 9010388876626828007
+    second: Frame 33(1)_89
+  - first:
+      213: -9051006488750501224
+    second: Frame 33(1)_90
+  - first:
+      213: 2469055525751077037
+    second: Frame 33(1)_91
+  - first:
+      213: -2056553123395654007
+    second: Frame 33(1)_92
+  - first:
+      213: 5380536411397684898
+    second: Frame 33(1)_93
+  - first:
+      213: -2664780177746711942
+    second: Frame 33(1)_94
+  - first:
+      213: -1118293411129432720
+    second: Frame 33(1)_95
+  - first:
+      213: -6626773549868640684
+    second: Frame 33(1)_96
+  - first:
+      213: -3594595770046538534
+    second: Frame 33(1)_97
+  - first:
+      213: -6276225336128490783
+    second: Frame 33(1)_98
+  - first:
+      213: -6047235404188724050
+    second: Frame 33(1)_99
+  - first:
+      213: -1832873075603956988
+    second: Frame 33(1)_100
+  - first:
+      213: -3480830500996517564
+    second: Frame 33(1)_101
+  - first:
+      213: -7879938996950127911
+    second: Frame 33(1)_102
+  - first:
+      213: -3709943520821248166
+    second: Frame 33(1)_103
+  - first:
+      213: 3810607157451174999
+    second: Frame 33(1)_104
+  - first:
+      213: 9093245163306990251
+    second: Frame 33(1)_105
+  - first:
+      213: 4798651386397351814
+    second: Frame 33(1)_106
+  - first:
+      213: 4085295566971399696
+    second: Frame 33(1)_107
+  - first:
+      213: -5525688402061851589
+    second: Frame 33(1)_108
+  - first:
+      213: 488187202347866049
+    second: Frame 33(1)_109
+  - first:
+      213: 6889079186926111588
+    second: Frame 33(1)_110
+  - first:
+      213: 7827213490614270050
+    second: Frame 33(1)_111
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Frame 33(1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 394
+        height: 624
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b9339ec94814b2478d433a52d86a2f4
+      internalID: -1789114451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 354bcb81901d00f49a5080f12d69a1f6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Frame 33(1)_0: -1789114451
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
