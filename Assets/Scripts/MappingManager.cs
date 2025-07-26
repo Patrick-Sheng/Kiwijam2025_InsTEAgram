@@ -113,18 +113,18 @@ public class MappingManager : MonoBehaviour
         return connLine;
     }
 
-    public bool HasRelationWithEachOther(PersonNode to, PersonNode from)
-    {
-        return to.connections.ContainsKey(from) && from.connections.ContainsKey(to);
-    }
+    //public bool HasRelationWithEachOther(PersonNode to, PersonNode from)
+    //{
+    //    return to.connections.ContainsKey(from) && from.connections.ContainsKey(to);
+    //}
 
-    public bool HasSameRelation(PersonNode to, PersonNode from, Relationship relationship)
-    {
-        Relationship toShip;
-        Relationship fromShip;
-        to.connections.TryGetValue(from, out toShip);
-        from.connections.TryGetValue(to, out fromShip);
+    //public bool HasSameRelation(PersonNode to, PersonNode from, Relationship relationship)
+    //{
+    //    Relationship toShip;
+    //    Relationship fromShip;
+    //    to.connections.TryGetValue(from, out toShip);
+    //    from.connections.TryGetValue(to, out fromShip);
 
-        return toShip.type == fromShip.type;
-    }
+    //    return toShip.type == fromShip.type;
+    //}
 }
