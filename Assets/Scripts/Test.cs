@@ -1,22 +1,10 @@
 using System.Collections.Generic;
 using System.Xml;
 using UnityEngine;
-using static DollarRecognizer;
 
 public class Test : MonoBehaviour
 {
     public Drawer drawer;
-    private DollarRecognizer recog;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        recog = new DollarRecognizer();
-        //Debug.Log(ReadVector2ListFromXML("Assets/Scripts/circle.xml").Count);
-        recog.SavePattern("Circle", ReadVector2ListFromXML("Assets/Scripts/circle.xml"));
-        recog.SavePattern("Triangle", ReadVector2ListFromXML("Assets/Scripts/triangle.xml"));
-        recog.SavePattern("Caret", ReadVector2ListFromXML("Assets/Scripts/caret.xml"));
-    }
 
     // Update is called once per frame
     void Update()
@@ -27,8 +15,6 @@ public class Test : MonoBehaviour
         }
         else if(Input.GetMouseButtonUp(0))
         {
-            Result res = recog.Recognize(drawer.points);
-            Debug.Log($"Match: {res.Match} | Score: {res.Score}");
             drawer.ResetPoints();           
         }
     }
