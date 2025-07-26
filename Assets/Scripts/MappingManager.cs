@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class MappingManager : MonoBehaviour
 {
-    [SerializeField] private Dictionary<int, PairingInfo> connections; // Use int here instead of Guid cause we need it to be based on the pair
-    [SerializeField] private Dictionary<Guid, ConnectionLine> connectionLines;
+    [SerializeField] private Dictionary<int, PairingInfo> connections = new Dictionary<int, PairingInfo>(); // Use int here instead of Guid cause we need it to be based on the pair
+    [SerializeField] private Dictionary<Guid, ConnectionLine> connectionLines = new Dictionary<Guid, ConnectionLine>();
 
     [SerializeField] private PersonNode[] personNodes;
 
@@ -84,10 +84,12 @@ public class MappingManager : MonoBehaviour
 
                 if (existingPair != null)
                 {
+                    Debug.Log("Existing pair found");
                     // Check if max relationships between pair is existing (2)
                     if (existingPair.relationships.Count == 2)
                     {
                         // TODO: Prompt user
+                        EndSelection();
                         return;
                     }
 
@@ -96,6 +98,7 @@ public class MappingManager : MonoBehaviour
                     {
                         if (ship.relationshipType == selectedRelation)
                         {
+                            EndSelection();
                             return;
                         }
                     }
@@ -118,12 +121,11 @@ public class MappingManager : MonoBehaviour
                     pair = Tuple.Create(selectedNode, targetNode),
                     relationships = new List<Relationship> { newRelationship }
                 };
+                connections.Add(pairingId, newPairingInfo);
 
                 DrawConnectionLine(newPairingInfo, newRelationship);
             }
-
-
-
+            EndSelection();
         }
     }
 
@@ -140,27 +142,59 @@ public class MappingManager : MonoBehaviour
         // Add new connectin line to connection line dictionary using relation ship id as the key
         connectionLines.Add(newRelationship.id, connLine);
 
+        Tuple<Vector2, Vector2> pairPostions = Tuple.Create(
+            (Vector2)pairingInfo.pair.Item1.aimLineOrigin.position,
+            (Vector2)pairingInfo.pair.Item2.aimLineOrigin.position);
+
         // Check the number of relationships for that pair
         // If the number is 1, just set line position using both the PersonNodes' origin points
         if (pairingInfo.relationships.Count == 1)
         {
             SetLinePoints(
                 connLine,
-                pairingInfo.pair.Item1.transform.position,
-                pairingInfo.pair.Item2.transform.position
+                pairPostions.Item1,
+                pairPostions.Item2
             );
         }
         else if (pairingInfo.relationships.Count == 2)
         {
+            Debug.Log("Should do new calc");
 
             // If the number is 2, use special parallel point calculation to get relative points
+            PointFinder pfinder = new PointFinder();
+            (Vector2 relPoint1, Vector2 relPoint2) = pfinder.CalculateRelativeLineOriginPosition(
+                pairPostions.Item1,
+                pairPostions.Item2
+            );
 
             // Get actual points by adding relative points to PersonNode 1 & 2's positions
+            Vector2 actualPoint1ForP1 = pairPostions.Item1 + relPoint1;
+            Vector2 actualPoint2ForP1 = pairPostions.Item1 + relPoint2;
+
+            Vector2 actualPoint1ForP2 = pairPostions.Item2 + relPoint1;
+            Vector2 actualPoint2ForP2 = pairPostions.Item2 + relPoint2;
 
             // Retrieve existing line from connection line dictionary using relationship id and update it's position
+            ConnectionLine line1;
+            connectionLines.TryGetValue(pairingInfo.relationships[0].id, out line1);
+
+            ConnectionLine line2;
+            connectionLines.TryGetValue(pairingInfo.relationships[1].id, out line2);
 
             // Set the new connection line's positions as well
+            if (line1 != null && line2 != null)
+            {
+                SetLinePoints(line1, actualPoint1ForP1, actualPoint1ForP2);
+                SetLinePoints(line2, actualPoint2ForP1, actualPoint2ForP2);
+            }         
         }
+    }
+
+    private void EndSelection()
+    {
+        selectedNode.DeactivateAimLine();
+        selectedNode = null;
+        targetNode = null;
     }
 
     private ConnectionLine CreateSingleLine(Vector2 pos1, Vector2 pos2)
@@ -179,10 +213,16 @@ public class MappingManager : MonoBehaviour
 
     private int CreatePairingId(int id1, int id2)
     {
-        string idString1 = id1.ToString();
-        string idString2 = id2.ToString();
 
-        return int.Parse(idString1 + idString2);
+        int min = Mathf.Min(id1, id2);
+        int max = Mathf.Max(id1, id2);
+        Debug.Log((min, max).GetHashCode());
+        return (min, max).GetHashCode();
+
+        //string idString1 = id1.ToString();
+        //string idString2 = id2.ToString();
+
+        //return int.Parse(idString1 + idString2);
     }
 
     private void RemoveLine(Guid lineId)
@@ -193,18 +233,15 @@ public class MappingManager : MonoBehaviour
         connectionLines.Remove(lineId);
     }
 
-    //public bool HasRelationWithEachOther(PersonNode to, PersonNode from)
-    //{
-    //    return to.connections.ContainsKey(from) && from.connections.ContainsKey(to);
-    //}
-
-    //public bool HasSameRelation(PersonNode to, PersonNode from, Relationship relationship)
-    //{
-    //    Relationship toShip;
-    //    Relationship fromShip;
-    //    to.connections.TryGetValue(from, out toShip);
-    //    from.connections.TryGetValue(to, out fromShip);
-
-    //    return toShip.type == fromShip.type;
-    //}
+    public void SetRelationshipType() //TODO: Test for now, fix later
+    {
+        if(selectedRelation != RelationshipTypes.CHEATING)
+        {
+            selectedRelation = RelationshipTypes.CHEATING;
+        }
+        else
+        {
+            selectedRelation = RelationshipTypes.HOOKUP;
+        }
+    }
 }

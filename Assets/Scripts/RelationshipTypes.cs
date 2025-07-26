@@ -15,7 +15,6 @@ public class RelationshipType
 {
     public string type;
     public Color color;
-    public ConnectionLine lineRef;
 
     public RelationshipType(string type, Color color)
     {

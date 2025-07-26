@@ -5,11 +5,11 @@ using System;
 
 public class PersonNode : MonoBehaviour, IHitReceiver
 {
-    public int id { get; private set; }
+    [field: SerializeField] public int id { get; private set; }
     [SerializeField] private string personName;
 
     [SerializeField] private LineRenderer aimLine;
-    [SerializeField] private Transform aimLineOrigin;
+    [field: SerializeField] public Transform aimLineOrigin { get; private set; }
     private bool isAiming;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
