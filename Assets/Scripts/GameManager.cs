@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         JOEY,
         DAVID,
         REUNION,
+        NULL,
     }
 
     public static GameManager Instance { get { return _instance; } }

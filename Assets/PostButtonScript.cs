@@ -3,9 +3,6 @@ using UnityEngine.UI;
 
 public class PostButtonScript : MonoBehaviour
 {
-    [SerializeField]
-    private Sprite postImage;
-
     public GameManager.CHARACTERS toCharacter = GameManager.CHARACTERS.GEORGE;
 
     [SerializeField]
