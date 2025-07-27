@@ -15,6 +15,9 @@ public class DMView : MonoBehaviour
     private GameManager.CHARACTERS[] headerChars = new GameManager.CHARACTERS[10];
 
     [SerializeField]
+    private ButtonScript profileButton;
+
+    [SerializeField]
     private GameObject[] dmGameObjects = new GameObject[10];
 
     public Dictionary<GameManager.CHARACTERS, GameObject> dmDictionary = new Dictionary<GameManager.CHARACTERS, GameObject>();
@@ -35,6 +38,11 @@ public class DMView : MonoBehaviour
     private float chatHeightDiff = 0f;
     private Rect chatImageRect;
 
+    private GameManager.CHARACTERS lastCharacter;
+
+    [SerializeField]
+    private Button[] exitButtons = new Button[2];
+
 
     public void Start()
     {
@@ -44,6 +52,10 @@ public class DMView : MonoBehaviour
             dmDictionary[headerChars[i]] = dmGameObjects[i];
         }
         screen.onChangeScreen.AddListener(ChangeCharacter);
+        for (int i = 0; i < 2; i++)
+        {
+            exitButtons[i].onClick.AddListener(OnExitPage);
+        }
     }
 
     private void Update()
@@ -55,6 +67,11 @@ public class DMView : MonoBehaviour
 
     public void ChangeCharacter()
     {
+        if (screen.character == GameManager.CHARACTERS.NULL)
+        {
+            screen.character = lastCharacter;
+        }
+
         headerImage.sprite = headers[screen.character];
         for (int i = 0; i < dmGameObjects.Length; i++)
         {
@@ -81,5 +98,16 @@ public class DMView : MonoBehaviour
             //chatHeightDiff = chatImageRect.y - (chatImageRect.height - botBoundMax);
             chatHeightDiff = chatImageRect.height - 1030;
         }
+        lastCharacter = screen.character;
+        profileButton.toCharacter = screen.character;
+    }
+
+    private void OnExitPage()
+    {
+        if (!canScroll)
+        {
+            return;
+        }
+        activeChatImage.rectTransform.anchoredPosition = new Vector3(0,topMax, 0);
     }
 }

@@ -17,6 +17,14 @@ public class ButtonScript : MonoBehaviour
 
     private void OnClick()
     {
+        if (toCharacter == GameManager.CHARACTERS.REUNION || toCharacter == GameManager.CHARACTERS.NULL)
+        {
+            if (toScreen == GameManager.SCREENS.PROFILE || toScreen == GameManager.SCREENS.POST)
+            {
+                return;
+            }
+
+        }
         GameManager.Instance.ChangeScreen(toScreen, toCharacter);
         if (toCharacter == GameManager.CHARACTERS.REUNION)
         {
