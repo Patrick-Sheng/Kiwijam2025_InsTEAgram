@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using Radishmouse;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MappingManager : MonoBehaviour
@@ -34,7 +35,11 @@ public class MappingManager : MonoBehaviour
             // For line renderer lines because the dynamic collider is in 3D
             if (Physics.Raycast(ray, out hitInfo))
             {
-                Debug.Log("Different layer");
+                IHitReceiver hitReceiver = hitInfo.transform.GetComponent<IHitReceiver>();
+                if (hitReceiver != null)
+                {
+                    hitReceiver.OnRaycastHit();
+                }
             }
         }
 
@@ -84,7 +89,6 @@ public class MappingManager : MonoBehaviour
 
                 if (existingPair != null)
                 {
-                    Debug.Log("Existing pair found");
                     // Check if max relationships between pair is existing (2)
                     if (existingPair.relationships.Count == 2)
                     {
@@ -108,7 +112,7 @@ public class MappingManager : MonoBehaviour
                     // If there are not two relatipnships with the pair already, add the relationship and supply unique id
                     existingPair.relationships.Add(newRelationship);
 
-                    DrawConnectionLine(existingPair, newRelationship);
+                    DrawConnectionLine(pairingId, existingPair, newRelationship);
                 }
             }
             else
@@ -123,23 +127,23 @@ public class MappingManager : MonoBehaviour
                 };
                 connections.Add(pairingId, newPairingInfo);
 
-                DrawConnectionLine(newPairingInfo, newRelationship);
+                DrawConnectionLine(pairingId, newPairingInfo, newRelationship);
             }
             EndSelection();
         }
     }
 
-    private void DrawConnectionLine(PairingInfo pairingInfo, Relationship newRelationship)
+    private void DrawConnectionLine(int pairId, PairingInfo pairingInfo, Relationship newRelationship)
     {
-        // ==== Line Creation ====
-
         // After adding relationship, instantiate ConnectionLine and initialise with callback and id
         ConnectionLine connLine = Instantiate(line);
         connLine.lineRenderer.startColor = selectedRelation.color;
         connLine.lineRenderer.endColor = selectedRelation.color;
-        connLine.onRemoveEvent += RemoveLine;
+        connLine.lineId = newRelationship.id;
+        connLine.pairId = pairId;
+        connLine.onRemoveEvent += RemoveRelationship;
 
-        // Add new connectin line to connection line dictionary using relation ship id as the key
+        // Add new connectin line to connection line dictionary using relationship id as the key
         connectionLines.Add(newRelationship.id, connLine);
 
         Tuple<Vector2, Vector2> pairPostions = Tuple.Create(
@@ -158,8 +162,6 @@ public class MappingManager : MonoBehaviour
         }
         else if (pairingInfo.relationships.Count == 2)
         {
-            Debug.Log("Should do new calc");
-
             // If the number is 2, use special parallel point calculation to get relative points
             PointFinder pfinder = new PointFinder();
             (Vector2 relPoint1, Vector2 relPoint2) = pfinder.CalculateRelativeLineOriginPosition(
@@ -186,6 +188,8 @@ public class MappingManager : MonoBehaviour
             {
                 SetLinePoints(line1, actualPoint1ForP1, actualPoint1ForP2);
                 SetLinePoints(line2, actualPoint2ForP1, actualPoint2ForP2);
+                line1.RemakeMesh();
+                line2.RemakeMesh();
             }         
         }
     }
@@ -195,14 +199,6 @@ public class MappingManager : MonoBehaviour
         selectedNode.DeactivateAimLine();
         selectedNode = null;
         targetNode = null;
-    }
-
-    private ConnectionLine CreateSingleLine(Vector2 pos1, Vector2 pos2)
-    {
-        ConnectionLine connLine = Instantiate(line);
-        connLine.lineRenderer.SetPosition(0, pos1);
-        connLine.lineRenderer.SetPosition(1, pos2);
-        return connLine;
     }
 
     private void SetLinePoints(ConnectionLine line, Vector2 pos1, Vector2 pos2)
@@ -216,21 +212,49 @@ public class MappingManager : MonoBehaviour
 
         int min = Mathf.Min(id1, id2);
         int max = Mathf.Max(id1, id2);
-        Debug.Log((min, max).GetHashCode());
         return (min, max).GetHashCode();
-
-        //string idString1 = id1.ToString();
-        //string idString2 = id2.ToString();
-
-        //return int.Parse(idString1 + idString2);
     }
 
-    private void RemoveLine(Guid lineId)
+    private void RemoveRelationship(int pairId, Guid lineId)
     {
+        // Remove the line
         ConnectionLine line;
         connectionLines.TryGetValue(lineId, out line);
+
         Destroy(line.gameObject);
         connectionLines.Remove(lineId);
+
+        // Remove reference in data
+        PairingInfo info;
+        connections.TryGetValue(pairId, out info);
+
+        Relationship shipToRemove = null;
+        foreach(Relationship ship in info.relationships)
+        {
+            if (ship.id == lineId)
+            {
+                shipToRemove = ship;
+            }
+        }
+        info.relationships.Remove(shipToRemove);
+        if (info.relationships.Count < 1)
+        {
+            connections.Remove(pairId);
+        }
+        else
+        {
+            // Shift position of line to center if there's still one relationship connection
+            ConnectionLine remainingLine;
+            connectionLines.TryGetValue(info.relationships[0].id, out remainingLine);
+            SetLinePoints(
+                remainingLine,
+                info.pair.Item1.aimLineOrigin.position,
+                info.pair.Item2.aimLineOrigin.position
+            );
+            remainingLine.RemakeMesh();
+        }
+
+
     }
 
     public void SetRelationshipType() //TODO: Test for now, fix later

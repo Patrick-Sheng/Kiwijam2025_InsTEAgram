@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+// TODO: Make this in to scriptable object and use it for selection button events
 public class RelationshipTypes
 {
     public static RelationshipType DATING = new RelationshipType("Dating", Color.cyan);
