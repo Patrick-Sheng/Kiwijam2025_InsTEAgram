@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
         NULL,
     }
 
+    public SCREENS lastScreen = SCREENS.DMLIST;
+
     public static GameManager Instance { get { return _instance; } }
 
     private void Awake()
@@ -60,6 +62,10 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < screenObjectArray.Count; i++)
         {
+            if (screenObjectArray[i].activeSelf)
+            {
+                lastScreen = screenObjectArray[i].GetComponent<Screen>().ScreenType;
+            }
             screenObjectArray[i].SetActive(false);
         }
         screenDictionary[toScreen].SetActive(true);
