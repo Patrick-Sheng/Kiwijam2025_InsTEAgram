@@ -97,3 +97,9 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# Ignore all files in Screenshots folder
+/Assets/Screenshots/*
+
+# Except this file, which keeps the folder tracked
+!/Assets/Screenshots/.gitkeep

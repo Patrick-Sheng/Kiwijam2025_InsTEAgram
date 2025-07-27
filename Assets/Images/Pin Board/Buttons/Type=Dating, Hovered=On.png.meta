@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Type=Dating, Hovered=On_0: 3599161344099284137
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Type=Cheating, Hovered=On_0: 6330863547963847124
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

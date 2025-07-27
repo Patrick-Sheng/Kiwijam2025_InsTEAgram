@@ -35,6 +35,7 @@ public class MappingManager : MonoBehaviour
             {
                 selectedNode.DeactivateAimLine();
                 selectedNode = null;
+                RenableButtonUsage();
             }
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
