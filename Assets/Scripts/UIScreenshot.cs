@@ -4,6 +4,7 @@ using System.IO;
 public class UIScreenshot : MonoBehaviour
 {
     public KeyCode captureKey = KeyCode.F12;
+    public GameObject submissionScreen;
 
     void Update()
     {
@@ -45,5 +46,10 @@ public class UIScreenshot : MonoBehaviour
     Destroy(screenImage);
         
         GameStateManager.Instance.ChangeState(GameStateManager.GAME_STATES.GAME_OVER);
+    }
+
+    public void ToggleSubmissionScreen()
+    {
+        submissionScreen.SetActive(!submissionScreen.activeSelf);
     }
 }
