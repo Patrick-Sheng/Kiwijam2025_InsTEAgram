@@ -25,7 +25,6 @@ public class Screen : MonoBehaviour
 
         GameManager.Instance.screenDictionary.Add(ScreenType, this.gameObject);
         GameManager.Instance.AddToScreens(this.gameObject);
-        Debug.Log(ScreenType.ToString());
     }
 
     public void Activate(GameManager.CHARACTERS _character)
