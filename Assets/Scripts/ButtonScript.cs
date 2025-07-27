@@ -26,6 +26,5 @@ public class ButtonScript : MonoBehaviour
 
         }
         GameManager.Instance.ChangeScreen(toScreen, toCharacter);
-        Debug.Log("Change to Character: " + toCharacter.ToString());
     }
 }
