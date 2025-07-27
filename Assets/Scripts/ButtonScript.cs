@@ -26,9 +26,6 @@ public class ButtonScript : MonoBehaviour
 
         }
         GameManager.Instance.ChangeScreen(toScreen, toCharacter);
-        if (toCharacter == GameManager.CHARACTERS.REUNION)
-        {
-            Debug.Log("HORSESHIT");
-        }
+        Debug.Log("Change to Character: " + toCharacter.ToString());
     }
 }

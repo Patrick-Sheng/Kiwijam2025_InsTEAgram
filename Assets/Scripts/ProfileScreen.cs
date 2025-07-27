@@ -53,6 +53,7 @@ public class ProfileScreen : MonoBehaviour
         }
         screen.onChangeScreen.AddListener(OnChanged);
         tagToggleButton.onClick.AddListener(OnTagToggled);
+        OnChanged();
     }
 
     private void OnChanged()
