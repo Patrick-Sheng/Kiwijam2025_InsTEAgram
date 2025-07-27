@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     }
 
     public SCREENS lastScreen = SCREENS.DMLIST;
+    public bool isTag = false;
 
     public static GameManager Instance { get { return _instance; } }
 

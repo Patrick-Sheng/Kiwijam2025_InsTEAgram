@@ -8,7 +8,7 @@ public class ButtonScript : MonoBehaviour
     public GameManager.CHARACTERS toCharacter = GameManager.CHARACTERS.GEORGE;
     [SerializeField]
     private Button button;
-
+ 
     private void Start()
     {
         button = GetComponent<Button>();
