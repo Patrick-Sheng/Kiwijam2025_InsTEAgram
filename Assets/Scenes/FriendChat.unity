@@ -151,8 +151,8 @@ RectTransform:
   m_Children:
   - {fileID: 1159004623}
   - {fileID: 1500430750}
-  - {fileID: 1786089849}
   - {fileID: 1896112609}
+  - {fileID: 1786089849}
   m_Father: {fileID: 2067157379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenObjectArray: []
+  lastScreen: 0
 --- !u!4 &91470052
 Transform:
   m_ObjectHideFlags: 0
@@ -5069,6 +5070,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introPanel: {fileID: 487017461}
+--- !u!114 &1497821282 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6445706854056990808, guid: 20bedeff3f7693840b6d957ebf1782ea, type: 3}
+  m_PrefabInstance: {fileID: 1114243233}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1543d48fdb0b8a64d824c1c291169519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1500430749
 GameObject:
   m_ObjectHideFlags: 0
@@ -6782,6 +6794,7 @@ MonoBehaviour:
   bioHeader: {fileID: 1208335343}
   tagToggleButton: {fileID: 1714074804}
   postsButton: {fileID: 1691072846}
+  backButton: {fileID: 1497821282}
   characters: 000000000100000002000000030000000400000005000000060000000700000008000000
   bioHeaders:
   - {fileID: 21300000, guid: ac86dc580e428a246acdf86f87edac21, type: 3}

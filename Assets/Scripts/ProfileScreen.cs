@@ -23,6 +23,9 @@ public class ProfileScreen : MonoBehaviour
     private Button postsButton;
 
     [SerializeField]
+    private ButtonScript backButton;
+
+    [SerializeField]
     private GameManager.CHARACTERS[] characters = new GameManager.CHARACTERS[9];
 
     [SerializeField]
@@ -60,6 +63,14 @@ public class ProfileScreen : MonoBehaviour
             OnTagToggled();
         }
         posts.sprite = normPostDict[screen.character];
+        if (GameManager.Instance.lastScreen != GameManager.SCREENS.DMLIST)
+        {
+            backButton.toScreen = GameManager.SCREENS.DMVIEW;
+        }
+        else
+        {
+            backButton.toScreen = GameManager.SCREENS.DMLIST;
+        }
     }
 
 

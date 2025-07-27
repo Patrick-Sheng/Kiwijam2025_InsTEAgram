@@ -8,8 +8,7 @@ public class Screen : MonoBehaviour
 {
     [SerializeField]
     private bool defaultScreen = false;
-    [SerializeField]
-    private GameManager.SCREENS ScreenType = GameManager.SCREENS.DMLIST;
+    public GameManager.SCREENS ScreenType = GameManager.SCREENS.DMLIST;
     [SerializeField]
     private bool characterOwnership = false;
 
