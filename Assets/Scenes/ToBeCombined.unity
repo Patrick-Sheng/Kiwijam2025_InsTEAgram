@@ -726,9 +726,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1500430750}
-  - {fileID: 1786089849}
   - {fileID: 1159004623}
+  - {fileID: 1786089849}
+  - {fileID: 1500430750}
   - {fileID: 1896112609}
   m_Father: {fileID: 2067157379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10300,7 +10300,6 @@ GameObject:
   - component: {fileID: 1691072848}
   - component: {fileID: 1691072847}
   - component: {fileID: 1691072846}
-  - component: {fileID: 1691072845}
   m_Layer: 0
   m_Name: PostButton
   m_TagString: Untagged
@@ -10327,20 +10326,6 @@ RectTransform:
   m_AnchoredPosition: {x: 117.27142, y: -735.1754}
   m_SizeDelta: {x: 607.9389, y: 509.6213}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1691072845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691072843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae5bc9f2a50063c428208a9f78ad9b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toCharacter: 0
-  button: {fileID: 0}
 --- !u!114 &1691072846
 MonoBehaviour:
   m_ObjectHideFlags: 0
