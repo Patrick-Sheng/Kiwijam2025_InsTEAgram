@@ -10,14 +10,21 @@ public class MappingManager : MonoBehaviour
     [SerializeField] private Dictionary<int, PairingInfo> connections = new Dictionary<int, PairingInfo>(); // Use int here instead of Guid cause we need it to be based on the pair
     [SerializeField] private Dictionary<Guid, ConnectionLine> connectionLines = new Dictionary<Guid, ConnectionLine>();
 
-    [SerializeField] private PersonNode[] personNodes;
+    [SerializeField] private RelationshipButton[] relationshipBtns;
 
     [SerializeField] private PersonNode selectedNode;
     [SerializeField] private PersonNode targetNode;
 
     [SerializeField] private ConnectionLine line;
 
-    [SerializeField] private RelationshipType selectedRelation = RelationshipTypes.CHEATING;
+    [SerializeField] private RelationshipType selectedRelation;
+
+    public void Start()
+    {
+        // Have the first button enabled by default
+        relationshipBtns[0].EnableSprite();
+        selectedRelation = relationshipBtns[0].relationshipType;
+    }
 
     public void Update()
     {
@@ -137,6 +144,7 @@ public class MappingManager : MonoBehaviour
     {
         // After adding relationship, instantiate ConnectionLine and initialise with callback and id
         ConnectionLine connLine = Instantiate(line);
+        Debug.Log(selectedRelation.color);
         connLine.lineRenderer.startColor = selectedRelation.color;
         connLine.lineRenderer.endColor = selectedRelation.color;
         connLine.lineId = newRelationship.id;
@@ -257,15 +265,18 @@ public class MappingManager : MonoBehaviour
 
     }
 
-    public void SetRelationshipType() //TODO: Test for now, fix later
+    public void OnButtonClickEvent(RelationshipButton button)
     {
-        if(selectedRelation != RelationshipTypes.CHEATING)
+        foreach(RelationshipButton btn in relationshipBtns)
         {
-            selectedRelation = RelationshipTypes.CHEATING;
+            btn.DisableSprite();
         }
-        else
-        {
-            selectedRelation = RelationshipTypes.HOOKUP;
-        }
+        button.EnableSprite();
+        SetRelationshipType(button.relationshipType);
+    }
+
+    private void SetRelationshipType(RelationshipType type)
+    {
+        selectedRelation = type;
     }
 }
