@@ -42,6 +42,12 @@ public class PersonNode : MonoBehaviour, IHitReceiver
         aimLine.SetPosition(0, aimLineOrigin.position);
     }
 
+    public void SetLineColor(Color color)
+    {
+        aimLine.startColor = color;
+        aimLine.endColor = color;
+    }
+
     public void OnRaycastHit()
     {
         ActivateAimLine();

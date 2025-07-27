@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Cheating
   m_EditorClassIdentifier: 
   type: Cheating
-  color: {r: 0.95294124, g: 0.35686275, b: 0.76470596, a: 0}
+  color: {r: 0.95294124, g: 0.35686275, b: 0.76470596, a: 1}

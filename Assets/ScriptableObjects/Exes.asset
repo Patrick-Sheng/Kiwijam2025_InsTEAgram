@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Exes
   m_EditorClassIdentifier: 
   type: Exes
-  color: {r: 0.9568628, g: 0.54901963, b: 0.16862746, a: 0}
+  color: {r: 0.9568628, g: 0.54901963, b: 0.16862746, a: 1}

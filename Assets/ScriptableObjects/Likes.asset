@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Likes
   m_EditorClassIdentifier: 
   type: Likes
-  color: {r: 0.36078432, g: 0.49803925, b: 0.9568628, a: 0}
+  color: {r: 0.36078432, g: 0.49803925, b: 0.9568628, a: 1}

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HookedUp
   m_EditorClassIdentifier: 
   type: HookedUp
-  color: {r: 0.60784316, g: 0.43137258, b: 0.80392164, a: 0}
+  color: {r: 0.60784316, g: 0.43137258, b: 0.80392164, a: 1}

@@ -4,7 +4,7 @@ public class PointFinder : MonoBehaviour
 {
     public Transform canvasParent;
 
-    public float radiusModifier = 0.3f;
+    public float radiusModifier = 0.1f;
 
     public (Vector2, Vector2) CalculateRelativeLineOriginPosition(Vector2 pos1, Vector2 pos2)
     {

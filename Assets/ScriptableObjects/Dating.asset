@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Dating
   m_EditorClassIdentifier: 
   type: Dating
-  color: {r: 0.69411767, g: 0.8078432, b: 0.6627451, a: 0}
+  color: {r: 0.69411767, g: 0.8078432, b: 0.6627451, a: 1}

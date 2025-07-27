@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Hates
   m_EditorClassIdentifier: 
   type: Hates
-  color: {r: 0.9725491, g: 0.5058824, b: 0.49411768, a: 0}
+  color: {r: 0.9725491, g: 0.5058824, b: 0.49411768, a: 1}

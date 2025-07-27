@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using Radishmouse;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MappingManager : MonoBehaviour
 {
@@ -59,12 +60,12 @@ public class MappingManager : MonoBehaviour
             // For everything else using a 2D collider
             if (hit)
             {
-                //IHitReceiver hitObject = hit.collider.GetComponent<IHitReceiver>();
                 PersonNode hitNode = hit.collider.GetComponent<PersonNode>();
                 if (hitNode != null)
                 {
                     if (selectedNode == null)
                     {
+                        hitNode.SetLineColor(selectedRelation.color);
                         hitNode.OnRaycastHit();
                     }
                     SelectNode(hitNode);
@@ -79,6 +80,7 @@ public class MappingManager : MonoBehaviour
         if (selectedNode == null)
         {
             selectedNode = node;
+            BlockButtonUsage();
         }
         else if (node != selectedNode) // Connecting two nodes together
         {
@@ -207,6 +209,7 @@ public class MappingManager : MonoBehaviour
         selectedNode.DeactivateAimLine();
         selectedNode = null;
         targetNode = null;
+        RenableButtonUsage();
     }
 
     private void SetLinePoints(ConnectionLine line, Vector2 pos1, Vector2 pos2)
@@ -273,6 +276,22 @@ public class MappingManager : MonoBehaviour
         }
         button.EnableSprite();
         SetRelationshipType(button.relationshipType);
+    }
+
+    public void BlockButtonUsage() // So they can't switch while the thread is aiming
+    {
+        foreach (RelationshipButton btn in relationshipBtns)
+        {
+            btn.GetComponent<Button>().interactable = false;
+        }
+    }
+
+    public void RenableButtonUsage()
+    {
+        foreach (RelationshipButton btn in relationshipBtns)
+        {
+            btn.GetComponent<Button>().interactable = true;
+        }
     }
 
     private void SetRelationshipType(RelationshipType type)
