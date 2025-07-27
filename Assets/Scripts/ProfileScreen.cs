@@ -8,6 +8,9 @@ public class ProfileScreen : MonoBehaviour
     private Screen screen;
 
     [SerializeField]
+    private PostsScreen postScreen;
+
+    [SerializeField]
     private Image posts;
 
     [SerializeField]
@@ -53,11 +56,13 @@ public class ProfileScreen : MonoBehaviour
         }
         screen.onChangeScreen.AddListener(OnChanged);
         tagToggleButton.onClick.AddListener(OnTagToggled);
+        postsButton.onClick.AddListener(OnPostButtonPressed);
         OnChanged();
     }
 
     private void OnChanged()
     {
+        backButton.toCharacter = screen.character;
         bioHeader.sprite = bioDict[screen.character];
         if (isTag)
         {
@@ -78,6 +83,7 @@ public class ProfileScreen : MonoBehaviour
     private void OnTagToggled()
     {
         isTag = !isTag;
+        GameManager.Instance.isTag = isTag;
         tagToggleCover.SetActive(isTag);
         if (isTag)
         {
@@ -86,6 +92,32 @@ public class ProfileScreen : MonoBehaviour
         else
         {
             posts.sprite = normPostDict[screen.character];
+        }
+    }
+
+    private void OnPostButtonPressed()
+    {
+        if (isTag)
+        {
+            if (screen.character == GameManager.CHARACTERS.JOEY || screen.character == GameManager.CHARACTERS.BRYAN)
+            {
+                GameManager.Instance.ChangeScreen(GameManager.SCREENS.POST, screen.character);
+            }
+            else
+            {
+                return;
+            }
+        }
+        else
+        {
+            if (screen.character == GameManager.CHARACTERS.JOEY)
+            {
+                return;
+            }
+            else
+            {
+                GameManager.Instance.ChangeScreen(GameManager.SCREENS.POST, screen.character);
+            }
         }
     }
 }
