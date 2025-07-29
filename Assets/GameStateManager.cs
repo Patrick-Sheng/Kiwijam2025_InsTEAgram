@@ -20,7 +20,8 @@ public class GameStateManager : MonoBehaviour
     INTRO,
     PLAYING,
     PAUSED,
-    GAME_OVER
+    GAME_OVER,
+    CLOSE_GAME,
   }
   private GAME_STATES currentState;
 
@@ -101,6 +102,13 @@ public class GameStateManager : MonoBehaviour
         pausePanel.SetActive(false);
         gameOverPanel.SetActive(true);
         break;
+      case GAME_STATES.CLOSE_GAME:
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                    Application.Quit();
+        #endif
+        break;
     }
   }
 
@@ -145,5 +153,10 @@ public class GameStateManager : MonoBehaviour
     introPanel.SetActive(true);
     pausePanel.SetActive(false);
     gameOverPanel.SetActive(false);
+  }
+
+  public void ToggleCloseGame()
+  {
+    ChangeState(GAME_STATES.CLOSE_GAME);
   }
 }
